@@ -1,4 +1,4 @@
-package com.entities;
+package com.example.demo.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -25,7 +25,7 @@ public class CartItem {
     @JoinColumn(name = "vacation_id")
     private Vacation vacation;
 
-    @ManyToOne
+    @ManyToMany
     @JoinTable(name = "excursion_cartitem",
                 joinColumns = @JoinColumn(name = "cart_item_id"),
                 inverseJoinColumns = @JoinColumn(name = "excursion_id")
@@ -41,7 +41,7 @@ public class CartItem {
     private Date create_date;
 
     @UpdateTimestamp
-    @Column(name = "create_date")
+    @Column(name = "last_update")
     private Date last_update;
 
 }

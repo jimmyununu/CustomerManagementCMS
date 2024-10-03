@@ -34,12 +34,19 @@ public class Division {
     @UpdateTimestamp
     private Date last_update;
 
-    @ManyToOne
-    @JoinColumn(name = "country_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "country_id", insertable = false, updatable = false)
     private Country country;
 
-    @Column(name = "country_id", insertable = false, updatable = false)
+    @Column(name = "country_id")
     private Long country_id;
+
+    //this fix below was to ensure that the division would populate once the
+    //country was selected.
+    public void setCountry(Country country){
+        setCountry_id(country.getId());
+        this.country = country;
+    }
 
     @OneToMany(mappedBy = "division",
                 cascade = CascadeType.ALL,

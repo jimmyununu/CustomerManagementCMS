@@ -56,4 +56,9 @@ public class Cart {
             fetch = FetchType.LAZY)
     private Set<CartItem> cartItem = new HashSet<>();
 
+    public void addItem(CartItem item){
+        System.out.println("added cart item");
+        this.cartItem.add(item);
+    }
+
 }

@@ -41,7 +41,7 @@ public class Customer {
     private Date last_update;
 
     @ManyToOne
-    @JoinColumn(name = "division_id", nullable = false)
+    @JoinColumn(name = "division_id")
     private Division division;
 
     @OneToMany(mappedBy = "customer",

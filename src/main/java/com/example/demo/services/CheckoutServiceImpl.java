@@ -36,6 +36,12 @@ public class CheckoutServiceImpl implements CheckoutService {
             item.setCart(cart);
             cart.addItem(item);
         });
+        if(cartItems.isEmpty()){
+            trackingNumber = "No items selected";
+        }
+        if(cart.getParty_size() <1){
+            trackingNumber = "Party size not valid";
+        }
 
         //debuging
         //System.out.println("saved cart item?");
